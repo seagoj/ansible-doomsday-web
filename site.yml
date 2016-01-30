@@ -1,0 +1,5 @@
+---
+- hosts: doomsday-web
+  sudo: true
+  roles:
+      - doomsday-web

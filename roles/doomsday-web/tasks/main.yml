@@ -1,0 +1,43 @@
+---
+- name: Install Apache
+  apt:
+    name: apache2
+    state: latest
+    update_cache: yes
+
+- name: Install Mysql
+  apt:
+    name: mysql-server
+    state: latest
+  apt:
+    name: libapache2-=mod-auth-mysql
+    state: latest
+  apt:
+    name: php5-mysql
+    state: latest
+
+- name: Activate Mysql
+  command: mysql_install_db
+  args:
+    sudo: true
+
+- name: Setup Mysql
+  command: /usr/bin/mysql_secure_installation
+  args:
+    sudo: true
+
+- name: Install PHP
+  apt:
+    name: php5
+    state: latest
+  apt:
+    name: libapache2-mod-php5
+    state: latest
+  apt:
+    name: php5-mcrypt
+    state: latest
+
+- name: Restart Apache
+  command: service apache2 restart
+  args:
+    sudo: true
