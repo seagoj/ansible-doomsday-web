@@ -2,4 +2,4 @@
 - hosts: doomsday-web
   sudo: true
   roles:
-      - doomsday-web
+    - doomsday-web
